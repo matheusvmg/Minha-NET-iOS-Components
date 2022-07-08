@@ -33,9 +33,6 @@ class ViewController: UIViewController {
         let card = Card()
         card.translatesAutoresizingMaskIntoConstraints = false
         card.isRounded = false
-        card.titleText = "Ative a Rede Unificada"
-        card.descriptionText = "Seu equipamento está desatualizado. Isso afeta a qualidade e a velocidade do seu sinal. Agende a troca do seu equipamento, ela é isenta de cobranças."
-        card.actionButtonTitle = "Agendar troca de equipamento"
         card.background = UIColor(red: 1.00, green: 0.74, blue: 0.29, alpha: 1.00)
         return card
     }()

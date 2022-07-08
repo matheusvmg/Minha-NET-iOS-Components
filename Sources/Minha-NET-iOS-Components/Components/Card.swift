@@ -49,6 +49,14 @@ public class Card: UIView {
         }
     }
     
+    private lazy var icon: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.image = UIImage(systemName: "wrench.and.screwdriver")
+        image.tintColor = UIColor(red: 0.32, green: 0.33, blue: 0.36, alpha: 1.00)
+        return image
+    }()
+    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -85,6 +93,7 @@ public class Card: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = background
+        self.addSubview(icon)
         self.addSubview(titleLabel)
         self.addSubview(descriptionLabel)
         self.addSubview(actionButton)
@@ -97,7 +106,12 @@ public class Card: UIView {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 32),
+            icon.topAnchor.constraint(equalTo: self.topAnchor, constant: 34),
+            icon.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 34),
+            icon.heightAnchor.constraint(equalToConstant: 20),
+            icon.widthAnchor.constraint(equalToConstant: 20),
+            
+            titleLabel.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 10),
             titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 32),
             titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -32),
             
