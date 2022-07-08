@@ -8,7 +8,7 @@
 import UIKit
 
 @available(iOS 13.0, *)
-public class Card: UIView {
+public class Card: UIStackView {
     public var titleText: String = "Componente Teste" {
         didSet {
             titleLabel.text = titleText
@@ -94,14 +94,14 @@ public class Card: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = background
-        self.addSubview(icon)
-        self.addSubview(titleLabel)
-        self.addSubview(descriptionLabel)
-        self.addSubview(actionButton)
-        setupConstraints()
+        self.addArrangedSubview(icon)
+        self.addArrangedSubview(titleLabel)
+        self.addArrangedSubview(descriptionLabel)
+        self.addArrangedSubview(actionButton)
+        configureCard()
     }
     
-    required init?(coder: NSCoder) {
+    required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -125,5 +125,11 @@ public class Card: UIView {
             actionButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -32),
             actionButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -32)
         ])
+    }
+    
+    private func configureCard() {
+        self.distribution = .fill
+        self.axis = .vertical
+        self.spacing = 40
     }
 }
