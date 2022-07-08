@@ -25,6 +25,7 @@ class ViewController: UIViewController {
         card.titleText = "MP | Motor"
         card.descriptionText = "Vamos trabalhar nas respostas para ficar mais amigável para o cliente (mostra um código XXXX e uma mensagem técnica) - Classificar os códigos"
         card.actionButtonTitle = "Auto Diagnóstico"
+        card.background = UIColor(red: 0.13, green: 0.14, blue: 0.16, alpha: 1.00)
         return card
     }()
     
@@ -35,6 +36,7 @@ class ViewController: UIViewController {
         card.titleText = "Ative a Rede Unificada"
         card.descriptionText = "Seu equipamento está desatualizado. Isso afeta a qualidade e a velocidade do seu sinal. Agende a troca do seu equipamento, ela é isenta de cobranças."
         card.actionButtonTitle = "Agendar troca de equipamento"
+        card.background = UIColor(red: 1.00, green: 0.74, blue: 0.29, alpha: 1.00)
         return card
     }()
     

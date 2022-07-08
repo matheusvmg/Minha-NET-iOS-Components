@@ -8,18 +8,19 @@
 import UIKit
 
 public class Card: UIView {
-    public var titleText: String = "" {
+    public var titleText: String = "Componente Teste" {
         didSet {
             titleLabel.text = titleText
         }
     }
-    public var descriptionText: String = "" {
+    
+    public var descriptionText: String = "Descrição teste do componente" {
         didSet {
             descriptionLabel.text = descriptionText
         }
     }
     
-    public var actionButtonTitle: String = "" {
+    public var actionButtonTitle: String = "Título do botão" {
         didSet {
             actionButton.setTitle(actionButtonTitle, for: .normal)
         }
