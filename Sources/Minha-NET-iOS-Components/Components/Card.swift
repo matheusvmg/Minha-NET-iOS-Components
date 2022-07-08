@@ -42,6 +42,12 @@ public class Card: UIView {
         }
     }
     
+    public var background: UIColor = .white {
+        didSet {
+            self.backgroundColor = background
+        }
+    }
+    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -77,7 +83,7 @@ public class Card: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor(red: 0.13, green: 0.14, blue: 0.16, alpha: 1.00)
+        self.backgroundColor = background
         self.addSubview(titleLabel)
         self.addSubview(descriptionLabel)
         self.addSubview(actionButton)
