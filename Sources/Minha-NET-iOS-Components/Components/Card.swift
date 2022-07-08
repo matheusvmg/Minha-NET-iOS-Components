@@ -107,8 +107,8 @@ public class Card: UIView {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            icon.topAnchor.constraint(equalTo: self.topAnchor, constant: 34),
-            icon.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 34),
+            icon.topAnchor.constraint(equalTo: self.topAnchor, constant: 32),
+            icon.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 32),
             icon.heightAnchor.constraint(equalToConstant: 20),
             icon.widthAnchor.constraint(equalToConstant: 20),
             
