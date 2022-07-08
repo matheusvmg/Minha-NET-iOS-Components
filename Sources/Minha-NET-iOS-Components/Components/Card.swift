@@ -7,6 +7,7 @@
 
 import UIKit
 
+@available(iOS 13.0, *)
 public class Card: UIView {
     public var titleText: String = "Componente Teste" {
         didSet {
@@ -49,11 +50,10 @@ public class Card: UIView {
         }
     }
     
-    @available(iOS 13.0, *)
     private lazy var icon: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(systemName: "wrench.and.screwdriver")
+        image.image = UIImage.checkmark
         image.tintColor = UIColor(red: 0.32, green: 0.33, blue: 0.36, alpha: 1.00)
         return image
     }()
