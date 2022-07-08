@@ -20,7 +20,8 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "Minha-NET-iOS-Components",
-            dependencies: []),
+            dependencies: [],
+            path: "Sources/Minha-NET-iOS-Components/Components"),
         .testTarget(
             name: "Minha-NET-iOS-ComponentsTests",
             dependencies: ["Minha-NET-iOS-Components"]),
