@@ -49,6 +49,7 @@ public class Card: UIView {
         }
     }
     
+    @available(iOS 13.0, *)
     private lazy var icon: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
