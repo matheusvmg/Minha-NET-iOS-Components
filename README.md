@@ -10,4 +10,4 @@ A Components Package for Minha NET App.
 - StandardButton
 
 
-<h1 style="text-align:center">develop by Minha NET App iOS Team🍎</h1>
+<h5 align="center">Developed by Minha NET App iOS Team🍎</h5>
