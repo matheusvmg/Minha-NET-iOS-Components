@@ -28,8 +28,24 @@ public class CardView: UIView {
     public var cardBackground: CardBackgroundColor = .standard {
         didSet {
             self.backgroundColor = getBackgroundColor(type: cardBackground)
+            self.stackview.backgroundColor = getBackgroundColor(type: cardBackground)
         }
     }
+    
+    private lazy var stackview: UIStackView = {
+        let stackview = UIStackView()
+        stackview.translatesAutoresizingMaskIntoConstraints = false
+        stackview.backgroundColor = getBackgroundColor(type: .standard)
+        return stackview
+    }()
+    
+    private lazy var iconStackview: UIStackView = {
+        let stackview = UIStackView(arrangedSubviews: [icon, UIView()])
+        stackview.translatesAutoresizingMaskIntoConstraints = false
+        stackview.distribution = .fill
+        stackview.axis = .horizontal
+        return stackview
+    }()
     
     private lazy var icon: UIImageView = {
         let image = UIImageView()
@@ -65,43 +81,23 @@ public class CardView: UIView {
     
     public init() {
         super.init(frame: .zero)
-        self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = getBackgroundColor(type: .standard)
-        self.addSubview(icon)
-        self.addSubview(titleLabel)
-        self.addSubview(subtitleLabel)
-        self.addSubview(descriptionLabel)
-        self.addSubview(actionButton)
+        self.addSubview(stackview)
+        configureStackview()
+        setupSpacingBetweenElements()
         setupConstraints()
     }
     
-    required init?(coder: NSCoder) {
+    required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            icon.topAnchor.constraint(equalTo: self.topAnchor, constant: 32),
-            icon.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 32),
-            icon.heightAnchor.constraint(equalToConstant: 20),
-            icon.widthAnchor.constraint(equalToConstant: 22),
-            
-            titleLabel.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 32),
-            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 32),
-            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -32),
-            
-            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 32),
-            subtitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 32),
-            subtitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -32),
-            
-            descriptionLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 24),
-            descriptionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 32),
-            descriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -32),
-            
-            actionButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 24),
-            actionButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 32),
-            actionButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -32),
-            actionButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -32)
+            stackview.topAnchor.constraint(equalTo: self.topAnchor, constant: 32),
+            stackview.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 32),
+            stackview.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -32),
+            stackview.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -32)
         ])
     }
     
@@ -122,11 +118,12 @@ public class CardView: UIView {
     
     private func configureCardInternalComponents() {
         guard let cardInformation = cardInformation else { return }
-        icon.image = UIImage(systemName: cardInformation.icon!)
+        validateIfElementsGonnaAppearInTheScreen()
+        icon.image = UIImage(systemName: cardInformation.icon ?? "")
         titleLabel.titleText = cardInformation.title
-        subtitleLabel.subtitleText = cardInformation.subtitle!
+        subtitleLabel.subtitleText = cardInformation.subtitle ?? ""
         descriptionLabel.descriptionText = cardInformation.description
-        actionButton.buttonTitle = cardInformation.buttonTitle!
+        actionButton.buttonTitle = cardInformation.buttonTitle ?? ""
         isRounded = cardInformation.isRounded
     }
     
@@ -142,6 +139,41 @@ public class CardView: UIView {
             return UIColor(red: 0.13, green: 0.14, blue: 0.16, alpha: 1.00)
         case .black:
             return UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00)
+        }
+    }
+    
+    private func configureStackview() {
+        self.stackview.addArrangedSubview(iconStackview)
+        self.stackview.addArrangedSubview(titleLabel)
+        self.stackview.addArrangedSubview(subtitleLabel)
+        self.stackview.addArrangedSubview(descriptionLabel)
+        self.stackview.addArrangedSubview(actionButton)
+        self.stackview.spacing = 32
+        self.stackview.distribution = .fill
+        self.stackview.axis = .vertical
+    }
+    
+    private func setupSpacingBetweenElements() {
+        self.stackview.setCustomSpacing(10, after: iconStackview)
+        self.stackview.setCustomSpacing(32, after: titleLabel)
+        self.stackview.setCustomSpacing(24, after: subtitleLabel)
+        self.stackview.setCustomSpacing(24, after: descriptionLabel)
+        self.stackview.setCustomSpacing(32, after: actionButton)
+    }
+    
+    private func validateIfElementsGonnaAppearInTheScreen() {
+        guard let cardInformation = cardInformation else { return }
+        
+        if cardInformation.icon == nil {
+            iconStackview.isHidden = true
+        }
+        
+        if cardInformation.subtitle == nil {
+            subtitleLabel.isHidden = true
+        }
+        
+        if !cardInformation.hasButton {
+            actionButton.isHidden = true
         }
     }
 }
