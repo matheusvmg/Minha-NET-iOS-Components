@@ -91,7 +91,7 @@ public class StandardButton: UIButton {
     private func getTitleColor(type: ButtonFilledType) -> UIColor {
         switch type {
         case .danger:
-            return UIColor(red: 1.00, green: 0.74, blue: 0.29, alpha: 1.00)
+            return UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00)
         case .warning:
             return UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00)
         case .white:
