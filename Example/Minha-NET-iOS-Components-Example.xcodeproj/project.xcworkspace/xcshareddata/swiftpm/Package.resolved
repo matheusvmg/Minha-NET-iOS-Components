@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "minha-net-ios-components",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/matheusvmg/Minha-NET-iOS-Components",
+      "state" : {
+        "branch" : "main",
+        "revision" : "354597492e339c13cb55ddee4c43a3e405adee68"
+      }
+    }
+  ],
+  "version" : 2
+}

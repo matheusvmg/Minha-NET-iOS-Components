@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D920517C287C8CBA0078D472 /* Minha-NET-iOS-Components in Frameworks */ = {isa = PBXBuildFile; productRef = D920517B287C8CBA0078D472 /* Minha-NET-iOS-Components */; };
 		D9ACC71528788187002909EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ACC71428788187002909EA /* AppDelegate.swift */; };
 		D9ACC71728788187002909EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ACC71628788187002909EA /* SceneDelegate.swift */; };
 		D9ACC71928788187002909EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ACC71828788187002909EA /* ViewController.swift */; };
@@ -31,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D920517C287C8CBA0078D472 /* Minha-NET-iOS-Components in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +86,7 @@
 			);
 			name = "Minha-NET-iOS-Components-Example";
 			packageProductDependencies = (
+				D920517B287C8CBA0078D472 /* Minha-NET-iOS-Components */,
 			);
 			productName = "Minha-NET-iOS-Components-Example";
 			productReference = D9ACC71128788187002909EA /* Minha-NET-iOS-Components-Example.app */;
@@ -114,6 +117,7 @@
 			);
 			mainGroup = D9ACC70828788187002909EA;
 			packageReferences = (
+				D920517A287C8CBA0078D472 /* XCRemoteSwiftPackageReference "Minha-NET-iOS-Components" */,
 			);
 			productRefGroup = D9ACC71228788187002909EA /* Products */;
 			projectDirPath = "";
@@ -362,6 +366,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D920517A287C8CBA0078D472 /* XCRemoteSwiftPackageReference "Minha-NET-iOS-Components" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/matheusvmg/Minha-NET-iOS-Components";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D920517B287C8CBA0078D472 /* Minha-NET-iOS-Components */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D920517A287C8CBA0078D472 /* XCRemoteSwiftPackageReference "Minha-NET-iOS-Components" */;
+			productName = "Minha-NET-iOS-Components";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D9ACC70928788187002909EA /* Project object */;
 }
