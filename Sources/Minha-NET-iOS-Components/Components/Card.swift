@@ -7,16 +7,6 @@
 
 import UIKit
 
-public struct CardContent {
-    let icon: String?
-    let title: String
-    let subtitle: String?
-    let description: String
-    let hasButton: Bool
-    let buttonTitle: String?
-    let isRounded: Bool
-}
-
 @available(iOS 13.0, *)
 public class CardView: UIView {
     public var cardInformation: CardContent? {
