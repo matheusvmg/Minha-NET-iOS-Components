@@ -68,13 +68,13 @@ class ViewController: UIViewController {
 
     private lazy var card: CardView = {
         let card = CardView()
-        card.cardInformation = CardContent(icon: "wifi", title: "Título", subtitle: "Subtítulo", description: "description", hasButton: true, buttonTitle: "título do botão", isRounded: true)
+        card.cardInformation = CardContent(icon: nil, title: "Título", subtitle: nil, description: "description", hasButton: false, buttonTitle: nil, isRounded: true, statusType: .available)
         return card
     }()
     
     private lazy var card2: CardView = {
         let card = CardView()
-        card.cardInformation = CardContent(icon: "wifi", title: "Título", subtitle: "Subtítulo", description: "description", hasButton: true, buttonTitle: "título do botão", isRounded: false)
+        card.cardInformation = CardContent(icon: "circle.fill", title: "Título", subtitle: "Subtítulo", description: "description", hasButton: true, buttonTitle: "título do botão", isRounded: false, statusType: .notAvailable)
         card.cardBackground = .warning
         return card
     }()

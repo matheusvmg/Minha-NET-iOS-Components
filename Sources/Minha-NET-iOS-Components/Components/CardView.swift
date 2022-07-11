@@ -47,6 +47,22 @@ public class CardView: UIView {
         return stackview
     }()
     
+    private lazy var titleStackview: UIStackView = {
+        let stackview = UIStackView(arrangedSubviews: [titleLabel, statusIcon])
+        stackview.translatesAutoresizingMaskIntoConstraints = false
+        stackview.distribution = .fill
+        stackview.axis = .horizontal
+        return stackview
+    }()
+    
+    private lazy var statusIcon: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.image = UIImage(systemName: "circle.fill")
+        image.tintColor = getBackgroundColor(type: .green)
+        return image
+    }()
+    
     private lazy var icon: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -103,7 +119,7 @@ public class CardView: UIView {
     
     private func getDefaultCardInfo() -> CardContent {
         self.isRounded = true
-        return CardContent(icon: "wrench.and.screwdriver.fill", title: "Título", subtitle: "Subtítulo", description: "Descrição do componente card.", hasButton: true, buttonTitle: "Título do botão", isRounded: true)
+        return CardContent(icon: "wrench.and.screwdriver.fill", title: "Título", subtitle: "Subtítulo", description: "Descrição do componente card.", hasButton: true, buttonTitle: "Título do botão", isRounded: true, statusType: .none)
     }
     
     private func makeRoundedCardView() {
@@ -125,6 +141,18 @@ public class CardView: UIView {
         descriptionLabel.descriptionText = cardInformation.description
         actionButton.buttonTitle = cardInformation.buttonTitle ?? ""
         isRounded = cardInformation.isRounded
+        
+        if cardInformation.statusType == .none {
+            statusIcon.isHidden = true
+        }
+        
+        if cardInformation.statusType == .available {
+            statusIcon.tintColor = getBackgroundColor(type: .green)
+        }
+        
+        if cardInformation.statusType == .notAvailable {
+            statusIcon.tintColor = getBackgroundColor(type: .warning)
+        }
     }
     
     private func getBackgroundColor(type: CardBackgroundColor) -> UIColor {
@@ -139,12 +167,14 @@ public class CardView: UIView {
             return UIColor(red: 0.13, green: 0.14, blue: 0.16, alpha: 1.00)
         case .black:
             return UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00)
+        case .green:
+            return UIColor(red: 0.00, green: 0.52, blue: 0.06, alpha: 1.00)
         }
     }
     
     private func configureStackview() {
         self.stackview.addArrangedSubview(iconStackview)
-        self.stackview.addArrangedSubview(titleLabel)
+        self.stackview.addArrangedSubview(titleStackview)
         self.stackview.addArrangedSubview(subtitleLabel)
         self.stackview.addArrangedSubview(descriptionLabel)
         self.stackview.addArrangedSubview(actionButton)
@@ -155,7 +185,7 @@ public class CardView: UIView {
     
     private func setupSpacingBetweenElements() {
         self.stackview.setCustomSpacing(10, after: iconStackview)
-        self.stackview.setCustomSpacing(32, after: titleLabel)
+        self.stackview.setCustomSpacing(32, after: titleStackview)
         self.stackview.setCustomSpacing(24, after: subtitleLabel)
         self.stackview.setCustomSpacing(24, after: descriptionLabel)
         self.stackview.setCustomSpacing(32, after: actionButton)
@@ -185,6 +215,7 @@ extension CardView {
         case danger
         case warning
         case black
+        case green
         case standard
     }
 }

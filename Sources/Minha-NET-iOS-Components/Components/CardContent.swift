@@ -15,8 +15,9 @@ public struct CardContent {
     let hasButton: Bool
     let buttonTitle: String?
     let isRounded: Bool
+    let statusType: StatusType
     
-    public init(icon: String?, title: String, subtitle: String?, description: String, hasButton: Bool, buttonTitle: String?, isRounded: Bool) {
+    public init(icon: String?, title: String, subtitle: String?, description: String, hasButton: Bool, buttonTitle: String?, isRounded: Bool, statusType: StatusType) {
         self.icon = icon
         self.title = title
         self.subtitle = subtitle
@@ -24,5 +25,6 @@ public struct CardContent {
         self.hasButton = hasButton
         self.buttonTitle = buttonTitle
         self.isRounded = isRounded
+        self.statusType = statusType
     }
 }
