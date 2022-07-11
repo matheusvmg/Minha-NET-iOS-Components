@@ -18,22 +18,17 @@ class ViewController: UIViewController {
         setupConstraints()
     }
 
-    private lazy var card: Card = {
-        let card = Card()
-        card.translatesAutoresizingMaskIntoConstraints = false
-        card.isRounded = true
-        card.titleText = "MP | Motor"
-        card.descriptionText = "Vamos trabalhar nas respostas para ficar mais amigável para o cliente (mostra um código XXXX e uma mensagem técnica) - Classificar os códigos"
-        card.actionButtonTitle = "Auto Diagnóstico"
-        card.background = UIColor(red: 0.13, green: 0.14, blue: 0.16, alpha: 1.00)
+    private lazy var card: CardView = {
+        let cardInformation = CardContent(icon: "wifi", title: "Boot", subtitle: "Uptime", description: "Faz mais de 10 dias que você não reinicia seu modem. O que acha da gente fazer um boot?", hasButton: true, buttonTitle: "Agendar visita técnica", isRounded: false)
+        let card = CardView()
+        card.cardInformation = cardInformation
         return card
     }()
     
-    private lazy var card2: Card = {
-        let card = Card()
-        card.translatesAutoresizingMaskIntoConstraints = false
-        card.isRounded = false
-        card.background = UIColor(red: 1.00, green: 0.74, blue: 0.29, alpha: 1.00)
+    private lazy var card2: CardView = {
+        let cardInformation = CardContent(icon: "wifi", title: "Boot", subtitle: "Uptime", description: "Faz mais de 10 dias que você não reinicia seu modem. O que acha da gente fazer um boot?", hasButton: true, buttonTitle: "Agendar visita técnica", isRounded: false)
+        let card = CardView()
+        card.cardInformation = cardInformation
         return card
     }()
     
