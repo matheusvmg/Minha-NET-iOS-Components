@@ -15,4 +15,6 @@ public struct CardContent {
     public let hasButton: Bool
     public let buttonTitle: String?
     public let isRounded: Bool
+    
+    public init() {}
 }
