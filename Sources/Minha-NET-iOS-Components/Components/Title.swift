@@ -22,7 +22,7 @@ public class Title: UILabel {
         }
     }
     
-    init(frame: CGRect, size: TitleSize = .sm) {
+    public init(frame: CGRect, size: TitleSize = .sm) {
         self.titleSize = size
         super.init(frame: frame)
         configureTitleComponent()

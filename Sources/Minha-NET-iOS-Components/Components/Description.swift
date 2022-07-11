@@ -22,7 +22,7 @@ public class Description: UILabel {
         }
     }
     
-    init(frame: CGRect, isTextCaption: Bool = false) {
+    public init(frame: CGRect, isTextCaption: Bool = false) {
         self.isTextCaption = isTextCaption
         super.init(frame: frame)
         configureDescriptionComponent()

@@ -22,7 +22,7 @@ public class Subtitle: UILabel {
         }
     }
     
-    init(frame: CGRect, size: SubtitleSize = .sm) {
+    public init(frame: CGRect, size: SubtitleSize = .sm) {
         self.subtitleSize = size
         super.init(frame: frame)
         configureSubtitleComponent()

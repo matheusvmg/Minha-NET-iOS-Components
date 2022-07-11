@@ -73,7 +73,7 @@ public class CardView: UIView {
         return button
     }()
     
-    init() {
+    public init() {
         super.init(frame: .zero)
         self.backgroundColor = getBackgroundColor(type: .standard)
         self.addSubview(icon)
