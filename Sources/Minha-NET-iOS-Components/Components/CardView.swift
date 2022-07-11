@@ -65,6 +65,7 @@ public class CardView: UIView {
     
     public init() {
         super.init(frame: .zero)
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = getBackgroundColor(type: .standard)
         self.addSubview(icon)
         self.addSubview(titleLabel)
