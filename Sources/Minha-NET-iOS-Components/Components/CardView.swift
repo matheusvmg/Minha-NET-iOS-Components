@@ -48,7 +48,7 @@ public class CardView: UIView {
     }()
     
     private lazy var titleStackview: UIStackView = {
-        let stackview = UIStackView(arrangedSubviews: [titleLabel, statusIcon])
+        let stackview = UIStackView(arrangedSubviews: [titleLabel, statusView])
         stackview.translatesAutoresizingMaskIntoConstraints = false
         stackview.distribution = .fill
         stackview.axis = .horizontal
@@ -61,6 +61,12 @@ public class CardView: UIView {
         image.image = UIImage(systemName: "circle.fill")
         image.tintColor = getBackgroundColor(type: .green)
         return image
+    }()
+    
+    private lazy var statusView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     private lazy var icon: UIImageView = {
@@ -98,6 +104,7 @@ public class CardView: UIView {
     public init() {
         super.init(frame: .zero)
         self.backgroundColor = getBackgroundColor(type: .standard)
+        self.statusView.addSubview(statusIcon)
         self.addSubview(stackview)
         configureStackview()
         setupSpacingBetweenElements()
@@ -113,7 +120,13 @@ public class CardView: UIView {
             stackview.topAnchor.constraint(equalTo: self.topAnchor, constant: 32),
             stackview.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 32),
             stackview.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -32),
-            stackview.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -32)
+            stackview.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -32),
+            
+            statusIcon.topAnchor.constraint(equalTo: statusView.topAnchor),
+            statusIcon.leadingAnchor.constraint(equalTo: statusView.leadingAnchor),
+            statusIcon.trailingAnchor.constraint(equalTo: statusView.trailingAnchor),
+            statusIcon.heightAnchor.constraint(equalToConstant: 15),
+            statusIcon.widthAnchor.constraint(equalToConstant: 15)
         ])
     }
     
