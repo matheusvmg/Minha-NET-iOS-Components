@@ -93,7 +93,7 @@ class ViewController: UIViewController {
     private lazy var card3: CardView = {
         let cardInformation = CardContent(icon: nil, title: "Está tudo certo por aí agora?", subtitle: nil, description: nil, hasButton: true, buttonTitle: "Ainda não", isRounded: true, statusType: .none)
         let aditionalView = StandardButton()
-        aditionalView.configureStandardButton(size: .md)
+        aditionalView.configureStandardButton(size: .md, isInverse: true)
         aditionalView.buttonTitle = "Tudo certo"
         let card = CardView(aditionalView: aditionalView)
         card.cardInformation = cardInformation
@@ -181,6 +181,13 @@ class ViewController: UIViewController {
         return button
     }()
     
+    private lazy var button5: StandardButton = {
+        let button = StandardButton(frame: .zero)
+        button.buttonTitle = "Continuo com problemas"
+        button.configureStandardButton(size: .sm, isInverse: true)
+        return button
+    }()
+    
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             scrollview.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
@@ -212,6 +219,16 @@ class ViewController: UIViewController {
         verticalStackview.addArrangedSubview(description1)
         verticalStackview.addArrangedSubview(description2)
         verticalStackview.addArrangedSubview(cardsTitle)
+        setupCardSubviews()
+        verticalStackview.addArrangedSubview(buttonsTitle)
+        setupButtonsSubviews()
+        scrollview.addSubview(verticalStackview)
+        scrollview.addSubview(centeredTitle)
+        scrollview.addSubview(button)
+        self.view.addSubview(scrollview)
+    }
+    
+    private func setupCardSubviews() {
         verticalStackview.addArrangedSubview(card)
         verticalStackview.addArrangedSubview(card2)
         verticalStackview.addArrangedSubview(card3)
@@ -223,14 +240,13 @@ class ViewController: UIViewController {
         verticalStackview.addArrangedSubview(card9)
         verticalStackview.addArrangedSubview(card10)
         verticalStackview.addArrangedSubview(card11)
-        verticalStackview.addArrangedSubview(buttonsTitle)
+    }
+    
+    private func setupButtonsSubviews() {
         verticalStackview.addArrangedSubview(button2)
         verticalStackview.addArrangedSubview(button3)
         verticalStackview.addArrangedSubview(button4)
-        scrollview.addSubview(verticalStackview)
-        scrollview.addSubview(centeredTitle)
-        scrollview.addSubview(button)
-        self.view.addSubview(scrollview)
+        verticalStackview.addArrangedSubview(button5)
     }
 
 }
