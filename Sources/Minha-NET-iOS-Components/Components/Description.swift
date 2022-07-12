@@ -18,7 +18,7 @@ public class Description: UILabel {
     
     public var isInverse: Bool = false {
         didSet {
-            self.textColor = isInverse ? .white : UIColor(red: 0.32, green: 0.33, blue: 0.36, alpha: 1.00)
+            self.textColor = isInverse ? .white : .black
         }
     }
     
@@ -38,6 +38,6 @@ public class Description: UILabel {
         self.font = UIFont.systemFont(ofSize: isTextCaption ? 12 : 16, weight: .regular)
         self.numberOfLines = 0
         self.lineBreakMode = .byWordWrapping
-        self.tintColor = UIColor(red: 0.32, green: 0.33, blue: 0.36, alpha: 1.00)
+        self.tintColor = .black
     }
 }

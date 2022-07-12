@@ -124,6 +124,29 @@ class ViewController: UIViewController {
         return card
     }()
     
+    private lazy var card8: CardView = {
+        let card = CardView()
+        return card
+    }()
+    
+    private lazy var card9: CardView = {
+        let card = CardView()
+        card.cardBackground = .white
+        return card
+    }()
+    
+    private lazy var card10: CardView = {
+        let card = CardView()
+        card.cardBackground = .warning
+        return card
+    }()
+    
+    private lazy var card11: CardView = {
+        let card = CardView()
+        card.cardBackground = .danger
+        return card
+    }()
+    
     private lazy var buttonsTitle: Title = {
         let label = Title(frame: .zero, size: .lg)
         label.titleText = "Tipos de Botões:"
@@ -196,6 +219,10 @@ class ViewController: UIViewController {
         verticalStackview.addArrangedSubview(card5)
         verticalStackview.addArrangedSubview(card6)
         verticalStackview.addArrangedSubview(card7)
+        verticalStackview.addArrangedSubview(card8)
+        verticalStackview.addArrangedSubview(card9)
+        verticalStackview.addArrangedSubview(card10)
+        verticalStackview.addArrangedSubview(card11)
         verticalStackview.addArrangedSubview(buttonsTitle)
         verticalStackview.addArrangedSubview(button2)
         verticalStackview.addArrangedSubview(button3)

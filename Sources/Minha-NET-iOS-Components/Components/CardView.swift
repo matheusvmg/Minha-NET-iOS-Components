@@ -29,8 +29,7 @@ public class CardView: UIView {
     
     public var cardBackground: CardBackgroundColor = .standard {
         didSet {
-            self.backgroundColor = getBackgroundColor(type: cardBackground)
-            self.stackview.backgroundColor = getBackgroundColor(type: cardBackground)
+            configureCardBackground(cardBackground: cardBackground)
         }
     }
     
@@ -99,7 +98,7 @@ public class CardView: UIView {
     
     private lazy var actionButton: StandardButton = {
         let button = StandardButton(frame: .zero)
-        button.configureStandardButton(size: .md)
+        button.configureStandardButton(size: .md, isInverse: true)
         return button
     }()
     
@@ -237,6 +236,48 @@ public class CardView: UIView {
         }
         
         return aditionalView
+    }
+    
+    private func removeInverseFromTextualsElements() {
+        icon.tintColor = .black
+        titleLabel.isInverse = false
+        subtitleLabel.isInverse = false
+        descriptionLabel.isInverse = false
+        actionButton.configureStandardButton(size: .md)
+    }
+    
+    private func setInverseToTextualsElements() {
+        icon.tintColor = .white
+        titleLabel.isInverse = true
+        subtitleLabel.isInverse = true
+        descriptionLabel.isInverse = true
+        actionButton.configureStandardButton(size: .md, isInverse: true)
+    }
+    
+    private func configureCardBackground(cardBackground: CardBackgroundColor) {
+        self.backgroundColor = getBackgroundColor(type: cardBackground)
+        self.stackview.backgroundColor = getBackgroundColor(type: cardBackground)
+        
+        switch cardBackground {
+        case .white:
+            removeInverseFromTextualsElements()
+            break
+        case .danger:
+            setInverseToTextualsElements()
+            break
+        case .warning:
+            removeInverseFromTextualsElements()
+            break
+        case .black:
+            setInverseToTextualsElements()
+            break
+        case .green:
+            removeInverseFromTextualsElements()
+            break
+        case .standard:
+            setInverseToTextualsElements()
+            break
+        }
     }
 }
 

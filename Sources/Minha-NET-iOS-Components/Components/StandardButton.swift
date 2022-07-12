@@ -23,12 +23,13 @@ public class StandardButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func configureStandardButton(size: ButtonTypes) {
+    public func configureStandardButton(size: ButtonTypes, isInverse: Bool = false) {
         self.setTitle(buttonTitle, for: .normal)
+        self.setTitleColor(isInverse ? .white : .black, for: .normal)
         self.clipsToBounds = true
         self.layer.borderWidth = 1
         self.backgroundColor = .clear
-        self.layer.borderColor = UIColor.white.cgColor
+        self.layer.borderColor = isInverse ? UIColor.white.cgColor : UIColor.black.cgColor
         
         switch size {
         case .lg:
