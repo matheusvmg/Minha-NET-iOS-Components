@@ -11,13 +11,13 @@ public struct CardContent {
     let icon: String?
     let title: String
     let subtitle: String?
-    let description: String
+    let description: String?
     let hasButton: Bool
     let buttonTitle: String?
     let isRounded: Bool
     let statusType: StatusType
     
-    public init(icon: String?, title: String, subtitle: String?, description: String, hasButton: Bool, buttonTitle: String?, isRounded: Bool, statusType: StatusType) {
+    public init(icon: String?, title: String, subtitle: String?, description: String?, hasButton: Bool, buttonTitle: String?, isRounded: Bool, statusType: StatusType) {
         self.icon = icon
         self.title = title
         self.subtitle = subtitle

@@ -15,6 +15,8 @@ public class CardView: UIView {
         }
     }
     
+    private var aditionalView: UIView?
+    
     private var isRounded: Bool = true {
         didSet {
             if isRounded {
@@ -101,8 +103,9 @@ public class CardView: UIView {
         return button
     }()
     
-    public init() {
+    public init(aditionalView: UIView? = nil) {
         super.init(frame: .zero)
+        self.aditionalView = aditionalView
         self.backgroundColor = getBackgroundColor(type: .standard)
         self.statusView.addSubview(statusIcon)
         self.addSubview(stackview)
@@ -151,7 +154,7 @@ public class CardView: UIView {
         icon.image = UIImage(systemName: cardInformation.icon ?? "")
         titleLabel.titleText = cardInformation.title
         subtitleLabel.subtitleText = cardInformation.subtitle ?? ""
-        descriptionLabel.descriptionText = cardInformation.description
+        descriptionLabel.descriptionText = cardInformation.description ?? ""
         actionButton.buttonTitle = cardInformation.buttonTitle ?? ""
         isRounded = cardInformation.isRounded
         
@@ -190,6 +193,7 @@ public class CardView: UIView {
         self.stackview.addArrangedSubview(titleStackview)
         self.stackview.addArrangedSubview(subtitleLabel)
         self.stackview.addArrangedSubview(descriptionLabel)
+        self.stackview.addArrangedSubview(getAditionalView())
         self.stackview.addArrangedSubview(actionButton)
         self.stackview.spacing = 32
         self.stackview.distribution = .fill
@@ -201,6 +205,7 @@ public class CardView: UIView {
         self.stackview.setCustomSpacing(32, after: titleStackview)
         self.stackview.setCustomSpacing(24, after: subtitleLabel)
         self.stackview.setCustomSpacing(24, after: descriptionLabel)
+        self.stackview.setCustomSpacing(16, after: getAditionalView())
         self.stackview.setCustomSpacing(32, after: actionButton)
     }
     
@@ -215,9 +220,23 @@ public class CardView: UIView {
             subtitleLabel.isHidden = true
         }
         
+        if cardInformation.description == nil {
+            descriptionLabel.isHidden = true
+        }
+        
         if !cardInformation.hasButton {
             actionButton.isHidden = true
         }
+    }
+    
+    private func getAditionalView() -> UIView {
+        guard let aditionalView = aditionalView else {
+            let view = UIView()
+            view.isHidden = true
+            return view
+        }
+        
+        return aditionalView
     }
 }
 

@@ -25,6 +25,12 @@ class ViewController: UIViewController {
         return scrollview
     }()
     
+    private lazy var centeredTitle: Title = {
+        let label = Title(frame: .zero, size: .xl)
+        label.titleText = "Mondrian Components"
+        return label
+    }()
+    
     private lazy var verticalStackview: UIStackView = {
         let stackview = UIStackView()
         stackview.translatesAutoresizingMaskIntoConstraints = false
@@ -78,6 +84,16 @@ class ViewController: UIViewController {
         return card
     }()
     
+    private lazy var card3: CardView = {
+        let cardInformation = CardContent(icon: nil, title: "Está tudo certo por aí agora?", subtitle: nil, description: nil, hasButton: true, buttonTitle: "Ainda não", isRounded: false, statusType: .none)
+        let aditionalView = StandardButton()
+        aditionalView.configureStandardButton(size: .md)
+        aditionalView.buttonTitle = "Tudo certo"
+        let card = CardView(aditionalView: aditionalView)
+        card.cardInformation = cardInformation
+        return card
+    }()
+    
     private lazy var button: StandardButton = {
         let button = StandardButton(frame: .zero)
         button.buttonTitle = "Continuo com problemas"
@@ -113,7 +129,11 @@ class ViewController: UIViewController {
             scrollview.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             scrollview.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
             
-            verticalStackview.topAnchor.constraint(equalTo: scrollview.topAnchor),
+            centeredTitle.topAnchor.constraint(equalTo: scrollview.topAnchor, constant: 10),
+            centeredTitle.leadingAnchor.constraint(equalTo: scrollview.leadingAnchor),
+            centeredTitle.trailingAnchor.constraint(equalTo: scrollview.trailingAnchor),
+            
+            verticalStackview.topAnchor.constraint(equalTo: scrollview.topAnchor, constant: 120),
             verticalStackview.leadingAnchor.constraint(equalTo: scrollview.leadingAnchor),
             verticalStackview.trailingAnchor.constraint(equalTo: scrollview.trailingAnchor),
             verticalStackview.widthAnchor.constraint(equalTo: scrollview.widthAnchor),
@@ -134,10 +154,12 @@ class ViewController: UIViewController {
         verticalStackview.addArrangedSubview(description2)
         verticalStackview.addArrangedSubview(card)
         verticalStackview.addArrangedSubview(card2)
+        verticalStackview.addArrangedSubview(card3)
         verticalStackview.addArrangedSubview(button2)
         verticalStackview.addArrangedSubview(button3)
         verticalStackview.addArrangedSubview(button4)
         scrollview.addSubview(verticalStackview)
+        scrollview.addSubview(centeredTitle)
         scrollview.addSubview(button)
         self.view.addSubview(scrollview)
     }
