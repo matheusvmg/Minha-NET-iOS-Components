@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     
     private lazy var centeredTitle: Title = {
         let label = Title(frame: .zero, size: .xl)
-        label.titleText = "Mondrian Components"
+        label.titleText = "Componentes iOS Mondrian"
         return label
     }()
     
@@ -71,27 +71,63 @@ class ViewController: UIViewController {
         let label = Description(frame: .zero, isTextCaption: true)
         return label
     }()
+    
+    private lazy var cardsTitle: Title = {
+        let label = Title(frame: .zero, size: .lg)
+        label.titleText = "Tipos de Cards:"
+        return label
+    }()
 
     private lazy var card: CardView = {
         let card = CardView()
-        card.cardInformation = CardContent(icon: nil, title: "Título", subtitle: nil, description: "description", hasButton: false, buttonTitle: nil, isRounded: true, statusType: .available)
+        card.cardInformation = CardContent(icon: nil, title: "Rede", subtitle: "Escolha a melhor rede", description: "Seu modem pode ter sido reiniciado e está com as configuração de fábrica. Você pode reestabelecer sua conexão configurando novamente sua rede Wi-Fi.", hasButton: true, buttonTitle: "Reiniciar equipamento", isRounded: true, statusType: .notAvailable)
         return card
     }()
     
     private lazy var card2: CardView = {
         let card = CardView()
-        card.cardInformation = CardContent(icon: "wifi", title: "Título", subtitle: "Subtítulo", description: "description", hasButton: true, buttonTitle: "título do botão", isRounded: false, statusType: .notAvailable)
+        card.cardInformation = CardContent(icon: nil, title: "Ative a Rede Unificada", subtitle: nil, description: "Seu equipamento está desatualizado. Isso afeta a qualidade e a velocidade do seu sinal. Agende a troca do seu equipamento, ela é isenta de cobranças.", hasButton: true, buttonTitle: "Agendar troca de equipamento", isRounded: true, statusType: .none)
         return card
     }()
     
     private lazy var card3: CardView = {
-        let cardInformation = CardContent(icon: nil, title: "Está tudo certo por aí agora?", subtitle: nil, description: nil, hasButton: true, buttonTitle: "Ainda não", isRounded: false, statusType: .none)
+        let cardInformation = CardContent(icon: nil, title: "Está tudo certo por aí agora?", subtitle: nil, description: nil, hasButton: true, buttonTitle: "Ainda não", isRounded: true, statusType: .none)
         let aditionalView = StandardButton()
         aditionalView.configureStandardButton(size: .md)
         aditionalView.buttonTitle = "Tudo certo"
         let card = CardView(aditionalView: aditionalView)
         card.cardInformation = cardInformation
         return card
+    }()
+    
+    private lazy var card4: CardView = {
+        let card = CardView()
+        card.cardInformation = CardContent(icon: nil, title: "MP | Motor", subtitle: nil, description: "Vamos trabalhar nas respostas para ficar mais amigável para o cliente (mostra um código XXXX e uma mensagem técnica) - Classificar os códigos", hasButton: false, buttonTitle: nil, isRounded: true, statusType: .available)
+        return card
+    }()
+    
+    private lazy var card5: CardView = {
+        let card = CardView()
+        card.cardInformation = CardContent(icon: "wifi", title: "Opa! Você já tem uma solicitação aberta para solucionar um problema em seus produtos", subtitle: nil, description: "Verifique se existe alguma visita técnica em aberto ou pendente de agendamento.", hasButton: true, buttonTitle: "Link para as visitas", isRounded: true, statusType: .none)
+        return card
+    }()
+    
+    private lazy var card6: CardView = {
+        let card = CardView()
+        card.cardInformation = CardContent(icon: "wifi", title: "Fique atento", subtitle: nil, description: "Podemos verificar a distância seu problema, não gostaria de fazer uma verificação antes de abrir uma VT... Lembre-se que pode ser gerado um custo adicional....", hasButton: false, buttonTitle: nil, isRounded: true, statusType: .none)
+        return card
+    }()
+    
+    private lazy var card7: CardView = {
+        let card = CardView()
+        card.cardInformation = CardContent(icon: nil, title: "Erro ao Resetar seu modem", subtitle: nil, description: nil, hasButton: true, buttonTitle: "Voltar para as verificações", isRounded: true, statusType: .none)
+        return card
+    }()
+    
+    private lazy var buttonsTitle: Title = {
+        let label = Title(frame: .zero, size: .lg)
+        label.titleText = "Tipos de Botões:"
+        return label
     }()
     
     private lazy var button: StandardButton = {
@@ -152,9 +188,15 @@ class ViewController: UIViewController {
         verticalStackview.addArrangedSubview(subtitle2)
         verticalStackview.addArrangedSubview(description1)
         verticalStackview.addArrangedSubview(description2)
+        verticalStackview.addArrangedSubview(cardsTitle)
         verticalStackview.addArrangedSubview(card)
         verticalStackview.addArrangedSubview(card2)
         verticalStackview.addArrangedSubview(card3)
+        verticalStackview.addArrangedSubview(card4)
+        verticalStackview.addArrangedSubview(card5)
+        verticalStackview.addArrangedSubview(card6)
+        verticalStackview.addArrangedSubview(card7)
+        verticalStackview.addArrangedSubview(buttonsTitle)
         verticalStackview.addArrangedSubview(button2)
         verticalStackview.addArrangedSubview(button3)
         verticalStackview.addArrangedSubview(button4)
